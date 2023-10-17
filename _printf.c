@@ -51,7 +51,7 @@ int flags, width, precision, size, index = 0;
 				flags, width, precision, size);
 			if (printed == -1)
 				return (-1);
-			printed_chars + = printed;
+			printed_chars+ = printed;
 		}
 	}
 
