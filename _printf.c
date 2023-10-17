@@ -5,11 +5,13 @@
 void print_buffer(char buffer[], int *index);
 
 /**
- * _printf - Printf function
+ *  _printf - Printf function.
  * @format: format.
  * Return: Printed chars.
- */
-int handle_print(const char *fmt, int *i, va_list list, char buffer[], int flags, int width, int precision, int size);
+*/
+
+int handle_print(const char *fmt, int *i, va_list list,
+char buffer[], int flags, int width, int precision, int size);
 int get_flags(const char *format, int *i);
 int get_width(const char *format, int *i, va_list list);
 int get_precision(const char *format, int *i, va_list list);
@@ -17,8 +19,8 @@ int get_size(const char *format, int *i);
 
 int _printf(const char *format, ...)
 {
-	int i, printed = 0, printed_chars = 0;
-        int flags, width, precision, size, index = 0;
+int i, printed = 0, printed_chars = 0;
+int flags, width, precision, size, index = 0;
 	va_list list;
 	char buffer[BUFF_SIZE];
 
@@ -32,7 +34,7 @@ int _printf(const char *format, ...)
 		if (format[i] != '%')
 		{
 			buffer[index++] = format[i];
-			if (index== BUFF_SIZE)
+			if (index == BUFF_SIZE)
 				print_buffer(buffer, &index);
 			/* write(1, &format[i], 1);*/
 			printed_chars++;
@@ -49,7 +51,8 @@ int _printf(const char *format, ...)
 				flags, width, precision, size);
 			if (printed == -1)
 				return (-1);
-			printed_chars += printed;}
+			printed_chars + = printed;
+		}
 	}
 
 	print_buffer(buffer, &index);
@@ -60,13 +63,13 @@ int _printf(const char *format, ...)
 }
 
 /**
- * print_buffer - Prints the string from buffer
+ * print_buffer - Prints the string from buffer
  * @buffer: Array of chars
- * @index: Index of the buffer.
- */
+ * @index: Index of the buffer
+*/
 void print_buffer(char buffer[], int *index)
 {
-	if (*index> 0)
+	if (*index > 0)
 		write(1, &buffer[0], *index);
 
 	*index = 0;
